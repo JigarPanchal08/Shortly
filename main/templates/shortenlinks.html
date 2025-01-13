@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Shorten Links</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            /* height: 100%; */
+            background-color: #ffffff;
+            font-family: "Montserrat", serif;
+            margin-top: 15.9rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+         }
+
+
+        .form {
+            background-color: #fff;
+            display: inline-block;
+            padding: 3rem;
+            border: 1px solid rgb(216, 211, 211);
+            border-radius: 0.5rem;
+            box-shadow: 5px 50px 15px -3px rgba(0, 0, 0, 0.1), 0 17px 29px -2px rgba(0, 0, 0, 0.05)
+        }
+
+        .form-title {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+            color: #000;
+            margin-bottom: 2rem;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .input-container input,
+        .form button {
+            outline: none;
+            border: 1px solid #e5e7eb;
+            margin: 8px 0;
+        }
+
+        .input-container input {
+            background-color: #fff;
+            padding: 1rem;
+            padding-right: 3rem;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            width: 300px;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .submit {
+            display: block;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            background-color: #2bd0d0;
+            color: #ffffff;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+            width: 100%;
+            border-radius: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .signup-link {
+            color: #6B7280;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            text-align: center;
+        }
+
+        .signup-link a {
+            text-decoration: underline;
+        }
+
+
+        .navDiv {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+
+        .navRightDiv {
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+
+        .navList {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            color: rgb(177, 176, 176);
+            cursor: pointer;
+        }
+
+        .navList li:hover {
+            color: #2bd0d0;
+        }
+
+        .navBtns {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .navBtns a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .loginBtn {
+            border: 1px solid #2bd0d0;
+            border-radius: 0.3rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .loginBtn:hover {
+            background-color: #2bd0d0;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease-in;
+        }
+
+        .signupBtn {
+            border: 1px solid #2bd0d0;
+            border-radius: 0.3rem;
+            padding: 0.5rem 1rem;
+            background-color: #2bd0d0;
+            color: white;
+        }
+
+        .logoutBtn {
+            border: 1px solid #2bd0d0;
+            border-radius: 0.3rem;
+            padding: 0.5rem 1rem;
+            background-color: #2bd0d0;
+            color: white;
+        }
+
+        .signupBtn:hover {
+            border: 1px solid #2bd0d0;
+            background-color: transparent;
+            color: black;
+            cursor: pointer;
+            transition: all 0.2s ease-in;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            background-color: #2bd0d0;
+            color: white;
+        } 
+
+        #ftr {
+            margin-top: 10rem
+        } 
+
+        table,
+        th,
+        td {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navDiv">
+            <div class="navRightDiv">
+                <h2 class="brandName">Shortly</h2>
+                <ul class="navList">
+                   <a href="/" style="text-decoration: none; color: rgb(177, 176, 176);"> <li>Home</li></a>
+                    <li>Features</li>
+                    <li>Pricing</li>
+                </ul>
+            </div>
+            <div class="navLeftDiv">
+                <ul class="navBtns">
+                    {% if request.user.is_authenticated %}
+                    <a href="/logout/"  type="submit"><li class="logoutBtn">
+                        Logout
+                    </li></a>
+                    {% else %}
+                    <a href="login/">
+                        <li class="loginBtn">Login</li>
+                    </a>
+                    <a href="signup/">
+                        <li class="signupBtn">SignUp</li>
+                    </a>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+   
+
+    <main class="container">
+      
+        <div class="formDiv">
+            <form class="form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="form-title">Shorten Your Links Here</p>
+                <div class="input-container">
+                    <input type="text" placeholder="Enter link" name="input_link">
+                    <span>
+                    </span>
+                </div>
+    
+                <button type="submit" class="submit">
+                    Shorten it
+                </button>
+                
+    
+            </form>
+        </div>
+
+        <table class="table table-striped" border="2">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Original Link</th>
+                    <th scope="col">Redirect / Shortned URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in queryset%}
+                <tr>
+                    {% if data.username == request.user.username %}
+                    <th>
+                        {{ data.id }}
+                    </th>
+                    <td>
+                        {{data.redirect_link}}
+                    </td>
+                    <td>
+                        <a href="/shortly/{{data.short_id}}" target="_blank">shortly-{{data.short_id}}</a>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+   
+    <footer id="ftr">
+        <div class="footer">
+            <p>&copy; 2025  All rights reserved | Developed by Jigar Panchal</p>
+        </div>
+    </footer>
+
+    {% if messages %}
+    <div class="toast-container position-fixed bottom-0 start-0 p-3 bg-red">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Success Message</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var toastEl = document.querySelector('.toast');
+            if (toastEl) {
+                var toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            }
+        });
+    </script>
+</body>
+
+</html>
